@@ -7,11 +7,11 @@ public class GroundChecker : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        GameplayHandler.IsJumping = true;
+        GameplayHandler._isGrounded = true;
     }
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        GameplayHandler.IsJumping = false;
+        GameplayHandler._isGrounded= false;
     }
 }

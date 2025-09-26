@@ -26,10 +26,13 @@ public class InputHandler : MonoBehaviour
         _playerInput.actions["Move"].canceled += OnMove;
         _playerInput.actions["Jump"].performed += OnJump;
         _playerInput.actions["Jump"].canceled += OnJump;
+        _playerInput.actions["Crouch"].performed += OnCrouch;
+        _playerInput.actions["Crouch"].canceled += OnCrouch;
+        _playerInput.actions["Fire"].performed += OnFire;
+        _playerInput.actions["Fire"].canceled += OnFire;
         
         DetectCurrentInputDevice();
     }
-
     private void OnDisable()
     {
         InputSystem.onDeviceChange -= OnDeviceChange;
@@ -39,8 +42,11 @@ public class InputHandler : MonoBehaviour
         _playerInput.actions["Move"].canceled -= OnMove;
         _playerInput.actions["Jump"].performed -= OnJump;
         _playerInput.actions["Jump"].canceled -= OnJump;
+        _playerInput.actions["Crouch"].performed -= OnCrouch;
+        _playerInput.actions["Crouch"].canceled -= OnCrouch;
+        _playerInput.actions["Fire"].performed -= OnFire;
+        _playerInput.actions["Fire"].canceled -= OnFire;
     }
-    
     private void OnDeviceChange(InputDevice device, InputDeviceChange change)
     {
         if (change == InputDeviceChange.Added || change == InputDeviceChange.Removed)
@@ -48,7 +54,6 @@ public class InputHandler : MonoBehaviour
             DetectCurrentInputDevice();
         }
     }
-
     private void DetectCurrentInputDevice()
     {
         _isControllerConnected = Gamepad.all.Count > 0;
@@ -58,14 +63,21 @@ public class InputHandler : MonoBehaviour
             ? "Controller connected: Switching to Gamepad controls."
             : "No controller connected: Switching to Keyboard/Mouse controls.");
     }
-
     private void OnMove(InputAction.CallbackContext context)
     {
         _gameplayHandler.Move = context.ReadValue<Vector2>();
     }
-
     private void OnJump(InputAction.CallbackContext context)
     {
         _gameplayHandler.IsJumping = context.ReadValueAsButton();
+    }
+    private void OnCrouch(InputAction.CallbackContext context)
+    {
+        _gameplayHandler.IsCrouching = context.ReadValueAsButton();
+       
+    }
+    private void OnFire(InputAction.CallbackContext context)
+    { 
+        _gameplayHandler.IsFiring = context.ReadValueAsButton();
     }
 }
