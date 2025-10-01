@@ -1,17 +1,19 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class GroundChecker : MonoBehaviour
+namespace Script
 {
-    public GameplayHandler GameplayHandler;
-
-    private void OnTriggerEnter2D(Collider2D other)
+    public class GroundChecker : MonoBehaviour
     {
-        GameplayHandler._isGrounded = true;
-    }
+        public GameplayHandler GameplayHandler;
 
-    private void OnTriggerExit2D(Collider2D other)
-    {
-        GameplayHandler._isGrounded= false;
+        private void OnTriggerEnter2D(Collider2D other)
+        {
+            GameplayHandler._isGrounded = true;
+        }
+
+        private void OnTriggerExit2D(Collider2D other)
+        {
+            GameplayHandler._isGrounded= false;
+        }
     }
 }

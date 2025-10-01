@@ -30,7 +30,10 @@ public class InputHandler : MonoBehaviour
         _playerInput.actions["Crouch"].canceled += OnCrouch;
         _playerInput.actions["Fire"].performed += OnFire;
         _playerInput.actions["Fire"].canceled += OnFire;
-        
+        _playerInput.actions["Dodge"].performed += OnDodge;
+        _playerInput.actions["Dodge"].canceled += OnDodge;
+        _playerInput.actions["Guard"].performed += OnGuard;
+        _playerInput.actions["Guard"].canceled += OnGuard;
         DetectCurrentInputDevice();
     }
     private void OnDisable()
@@ -46,6 +49,10 @@ public class InputHandler : MonoBehaviour
         _playerInput.actions["Crouch"].canceled -= OnCrouch;
         _playerInput.actions["Fire"].performed -= OnFire;
         _playerInput.actions["Fire"].canceled -= OnFire;
+        _playerInput.actions["Dodge"].performed -= OnDodge;
+        _playerInput.actions["Dodge"].canceled -= OnDodge;
+        _playerInput.actions["Guard"].performed -= OnGuard;
+        _playerInput.actions["Guard"].canceled -= OnGuard;
     }
     private void OnDeviceChange(InputDevice device, InputDeviceChange change)
     {
@@ -79,5 +86,13 @@ public class InputHandler : MonoBehaviour
     private void OnFire(InputAction.CallbackContext context)
     { 
         _gameplayHandler.IsFiring = context.ReadValueAsButton();
+    }
+    private void OnDodge(InputAction.CallbackContext context)
+    { 
+        _gameplayHandler.IsDodging = context.ReadValueAsButton();
+    }
+    private void OnGuard(InputAction.CallbackContext context)
+    { 
+        _gameplayHandler.IsGuarding = context.ReadValueAsButton();
     }
 }
