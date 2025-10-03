@@ -6,6 +6,7 @@ namespace Script
 {
     public class BulletScript : MonoBehaviour
     {
+        private PlayerLife _LifePlayer;
         public Rigidbody2D _rb;
         public float BulletForce;
         public GameObject Gun;
@@ -28,6 +29,7 @@ namespace Script
             if (other.gameObject.CompareTag("Player1"))
             {
                 Destroy(gameObject, _destroy);
+                _LifePlayer.TakeDamage();
             }
         }
     }

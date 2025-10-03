@@ -27,10 +27,11 @@ public class GameplayHandler : MonoBehaviour
    
    [Header("Processed")]
    [SerializeField] private GameplayState _currentState = GameplayState.Locomotion;
-   public bool _isGrounded;
+   public bool IsGrounded;
    
    [Header("Inputs")]
    public Vector2 Move;
+   public bool IsWalking;
    public bool IsJumping;
    public bool IsCrouching;
    public bool IsFiring;
@@ -42,6 +43,7 @@ public class GameplayHandler : MonoBehaviour
    
    public Animator _animator;
    private Rigidbody2D _rigidbody2D;
+   private SpriteRenderer _spriteRenderer;
    private GameObject Bullet;
    private GameObject CrouchingCollider;
    private GameObject StandingCollider;
@@ -52,33 +54,43 @@ public class GameplayHandler : MonoBehaviour
    // un champ qui me permet de créer un recul quand mon perso tire
    [SerializeField] private float InAirControl;
    [SerializeField] private float Dodge;
+   
    private void Awake()
    {
        _rigidbody2D = GetComponent<Rigidbody2D>();
        _animator = GetComponent<Animator>();
+       _spriteRenderer = GetComponent<SpriteRenderer>();
    }
    public void Update()
    {
        Shot += Time.deltaTime;
+       _animator.SetBool("IsGrounded", IsGrounded);
+       _animator.SetBool("IsJumping", IsJumping);
+       _animator.SetBool("Attack", IsFiring);
+       _animator.SetBool("IsDodging", IsDodging);
+       _animator.SetBool("IsCrouching", IsCrouching);
+       _animator.SetBool("IsGuarding", IsGuarding);
+      // _animator.SetBool("Dead", );
+      // _animator.SetBool("IsDamaged"),
        
        switch (_currentState)
        {
            case GameplayState.Locomotion: 
                // Condition
-               if (IsJumping && _isGrounded) _currentState = GameplayState.Jump;
+               if (IsJumping && IsGrounded) _currentState = GameplayState.Jump;
                if (IsCrouching) _currentState = GameplayState.Crouch;
                if (IsFiring) _currentState = GameplayState.Fire;
                if (IsDodging) _currentState = GameplayState.Dodge;
                if (IsGuarding) _currentState = GameplayState.Guard;
                HasFired = true;
-             //  _animator.SetFloat
+              
                
                DoLocomotion();
                // State
                break;
            
            case GameplayState.Jump:
-               if (!_isGrounded) _currentState = GameplayState.Locomotion;
+               if (!IsGrounded) _currentState = GameplayState.Locomotion;
                // Condition
                if (!HasJumped)
                {
@@ -116,20 +128,11 @@ public class GameplayHandler : MonoBehaviour
                if (!IsCrouching) _currentState = GameplayState.Locomotion;
                if (IsCrouching && IsJumping) _currentState = GameplayState.Jump;
                DoCrouch();
-               DoFire();
                break;
            
            case GameplayState.Dodge:
-              // if (!IsDodging) _currentState = GameplayState.Locomotion;
-               //if (IsDodging) _currentState = GameplayState.Locomotion;
-               if (!IsDodging)
-               {
-                   _currentState = GameplayState.Locomotion;
-               }
-               else
-               {
-                   IsDodging = false;
-               }
+               
+               if (!IsDodging) _currentState = GameplayState.Locomotion;
 
                DoDodge();
                break;
@@ -151,7 +154,17 @@ public class GameplayHandler : MonoBehaviour
        transform.localScale = new Vector3(1, 1, 1);
        _crouchingCollider.SetActive(false);
        _standingCollider.SetActive(true);
+       _animator.SetFloat("Walk", 0);
        
+       if (_rigidbody2D.linearVelocity.x > 0)
+       {
+           _spriteRenderer.flipX = false;
+       }
+
+       if (_rigidbody2D.linearVelocity.x < 0)
+       {
+           _spriteRenderer.flipX = true;
+       }
    }
    
    private void DoAir()

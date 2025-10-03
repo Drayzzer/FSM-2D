@@ -26,7 +26,7 @@ Transform:
   m_GameObject: {fileID: 1184263279072724246}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -0.03, y: 0.078, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -66,8 +66,8 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0.68}
-  m_Size: {x: 0.59, y: 0.86}
+  m_Offset: {x: -0.1, y: -0.47}
+  m_Size: {x: 0.4, y: 0.9}
   m_Direction: 0
 --- !u!1 &2677633516839932726
 GameObject:
@@ -94,7 +94,7 @@ Transform:
   m_GameObject: {fileID: 2677633516839932726}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.8740699, y: -0.23094001, z: 0}
+  m_LocalPosition: {x: 0.58, y: 0.4, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -166,8 +166,8 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0.7}
-  m_Size: {x: 0.6, y: 1.1}
+  m_Offset: {x: -0.1, y: -0.05}
+  m_Size: {x: 0.3, y: 1.5}
   m_Direction: 0
 --- !u!1 &6557986990876180435
 GameObject:
@@ -196,7 +196,7 @@ Transform:
   m_GameObject: {fileID: 6557986990876180435}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.00067, y: -0.84, z: 0}
+  m_LocalPosition: {x: 0.00067, y: -0.71, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -249,7 +249,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -0.006981492, y: 0}
+  m_Offset: {x: -0.1, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -259,7 +259,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.7347033, y: 1}
+  m_Size: {x: 0.4, y: 0.5}
   m_EdgeRadius: 0
 --- !u!1 &7080946589120975275
 GameObject:
@@ -276,6 +276,7 @@ GameObject:
   - component: {fileID: 5076693964240732263}
   - component: {fileID: 2058634256181361502}
   - component: {fileID: 1383548058151763765}
+  - component: {fileID: 8660654352291077326}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -350,7 +351,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -9095717837082945937, guid: 207ee8102dd4143d288186ef0be518ee, type: 3}
+  m_Sprite: {fileID: -1549590570, guid: 90c7332c857b6b043bad30766e14a946, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -428,7 +429,7 @@ Animator:
   m_GameObject: {fileID: 7080946589120975275}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 3c2a5b7097b0fe44394328c0bdb9252e, type: 2}
+  m_Controller: {fileID: 9100000, guid: b504c56702f0e034abfb3072efb868d1, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -465,24 +466,41 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameplayHandler
   _moveSpeed: 2000
-  _jumpForce: 20
+  _jumpForce: 25
   _airMultiplier: 0.5
   _crouchMultiplier: 0.5
-  _dodgeMultiplier: 30
+  _dodgeMultiplier: 2.5
   _currentState: 0
-  _isGrounded: 1
+  IsGrounded: 0
   Move: {x: 0, y: 0}
+  IsWalking: 0
   IsJumping: 0
   IsCrouching: 0
   IsFiring: 0
   IsDodging: 0
   IsGuarding: 0
+  _animator: {fileID: 5076693964240732263}
   _crouchingCollider: {fileID: 1184263279072724246}
   _standingCollider: {fileID: 3198837183158286774}
   _bullet: {fileID: 6889630093090367519}
   Recul: 30
   InAirControl: 0
   Dodge: 1
+--- !u!114 &8660654352291077326
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7080946589120975275}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5f51bd342fba354b8e1a190153bb62d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerLife
+  Health: 2
+  MaxHealth: 2
+  FireDamage: 1
 --- !u!1001 &1975653623732898860
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -492,12 +510,20 @@ PrefabInstance:
     m_TransformParent: {fileID: 3310257664403523319}
     m_Modifications:
     - target: {fileID: 1536838933200319273, guid: b9b635caee81cb747884f2bdb24076aa, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1536838933200319273, guid: b9b635caee81cb747884f2bdb24076aa, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1536838933200319273, guid: b9b635caee81cb747884f2bdb24076aa, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.19
+      value: 0.96
       objectReference: {fileID: 0}
     - target: {fileID: 1536838933200319273, guid: b9b635caee81cb747884f2bdb24076aa, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.11
+      value: 0.53
       objectReference: {fileID: 0}
     - target: {fileID: 1536838933200319273, guid: b9b635caee81cb747884f2bdb24076aa, type: 3}
       propertyPath: m_LocalPosition.z
@@ -532,6 +558,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2127591869944753999, guid: b9b635caee81cb747884f2bdb24076aa, type: 3}
+      propertyPath: Gun
+      value: 
+      objectReference: {fileID: 2677633516839932726}
+    - target: {fileID: 2127591869944753999, guid: b9b635caee81cb747884f2bdb24076aa, type: 3}
       propertyPath: _destroy
       value: 2
       objectReference: {fileID: 0}
@@ -558,6 +588,14 @@ PrefabInstance:
     - target: {fileID: 4969173059076236339, guid: b9b635caee81cb747884f2bdb24076aa, type: 3}
       propertyPath: m_Name
       value: Bullet
+      objectReference: {fileID: 0}
+    - target: {fileID: 6410726985428203590, guid: b9b635caee81cb747884f2bdb24076aa, type: 3}
+      propertyPath: m_Color.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6410726985428203590, guid: b9b635caee81cb747884f2bdb24076aa, type: 3}
+      propertyPath: m_Color.r
+      value: 0.800663
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

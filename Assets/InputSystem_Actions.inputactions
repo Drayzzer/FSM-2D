@@ -566,6 +566,17 @@
                     "action": "Guard",
                     "isComposite": false,
                     "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "da843925-73b5-4547-9166-638e3809595e",
+                    "path": "",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Guard",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         },
