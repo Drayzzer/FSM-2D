@@ -1,16 +1,14 @@
-using System;
-using Unity.VisualScripting;
 using UnityEngine;
 
 namespace Script
 {
     public class BulletScript : MonoBehaviour
     {
-        private PlayerLife _LifePlayer;
         public Rigidbody2D _rb;
         public float BulletForce;
         public GameObject Gun;
         [SerializeField] private float _destroy;
+        
         void Start()
         {
             _rb = GetComponent<Rigidbody2D>();
@@ -18,8 +16,8 @@ namespace Script
             _rb.AddForce(Vector2.right * BulletForce);
             transform.position = Gun.transform.position;
         }
- 
-        private void OnCollisionEnter2D(Collision2D other)
+        
+        private void OnTriggerEnter2D(Collider2D other)
         {
             if (other.gameObject.CompareTag("Ground"))
            { 
@@ -29,7 +27,18 @@ namespace Script
             if (other.gameObject.CompareTag("Player1"))
             {
                 Destroy(gameObject, _destroy);
-                _LifePlayer.TakeDamage();
+                GameplayHandler gameplayHandler = other.gameObject.GetComponent<GameplayHandler>();
+                Debug.Log("gameplayhandler marche");
+                PlayerLife playerLife = other.gameObject.GetComponent<PlayerLife>();
+                Debug.Log("playerlife marche");
+                if (gameplayHandler.IsGuarding)
+                {
+                    playerLife.TakeDamage(0.5f);
+                }
+                else
+                {
+                    playerLife.TakeDamage(1);
+                }
             }
         }
     }

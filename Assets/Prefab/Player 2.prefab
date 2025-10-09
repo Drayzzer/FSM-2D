@@ -286,6 +286,8 @@ MonoBehaviour:
   IsFiring: 0
   IsDodging: 0
   IsGuarding: 0
+  IsDead: 0
+  IsDamaged: 0
   _animator: {fileID: 4917834695858647492}
   _crouchingCollider: {fileID: 1027131892702959806}
   _standingCollider: {fileID: 4490889773199862804}
@@ -305,9 +307,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5f51bd342fba354b8e1a190153bb62d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerLife
-  Health: 2
   MaxHealth: 2
-  FireDamage: 1
 --- !u!114 &8389830491327327094
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -418,8 +418,8 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0.05, y: 0.6}
-  m_Size: {x: 0.45, y: 1.1}
+  m_Offset: {x: 0, y: 0.7}
+  m_Size: {x: 0.4, y: 1}
   m_Direction: 0
 --- !u!1 &8105596190856715802
 GameObject:

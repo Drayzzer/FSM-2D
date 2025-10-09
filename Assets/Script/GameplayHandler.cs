@@ -37,11 +37,12 @@ public class GameplayHandler : MonoBehaviour
    public bool IsFiring;
    public bool IsDodging;
    public bool IsGuarding;
+   public bool IsDead;
    private bool HasFired = true;
    private float Shot = 2;
    private bool HasJumped = false;
    
-   public Animator _animator;
+   private Animator _animator;
    private Rigidbody2D _rigidbody2D;
    private SpriteRenderer _spriteRenderer;
    private GameObject Bullet;
@@ -49,6 +50,7 @@ public class GameplayHandler : MonoBehaviour
    private GameObject StandingCollider;
    [SerializeField] private GameObject _crouchingCollider;
    [SerializeField] private GameObject _standingCollider;
+   [SerializeField] private GameObject _hitboxCollider;
    [SerializeField] private GameObject _bullet;
    [SerializeField] private float Recul;
    // un champ qui me permet de créer un recul quand mon perso tire
@@ -70,8 +72,6 @@ public class GameplayHandler : MonoBehaviour
        _animator.SetBool("IsDodging", IsDodging);
        _animator.SetBool("IsCrouching", IsCrouching);
        _animator.SetBool("IsGuarding", IsGuarding);
-      // _animator.SetBool("Dead", );
-      // _animator.SetBool("IsDamaged"),
        
        switch (_currentState)
        {
@@ -154,6 +154,7 @@ public class GameplayHandler : MonoBehaviour
        transform.localScale = new Vector3(1, 1, 1);
        _crouchingCollider.SetActive(false);
        _standingCollider.SetActive(true);
+       
        _animator.SetFloat("Walk", 0);
        
        if (_rigidbody2D.linearVelocity.x > 0)
@@ -166,7 +167,6 @@ public class GameplayHandler : MonoBehaviour
            _spriteRenderer.flipX = true;
        }
    }
-   
    private void DoAir()
    {
        if (HasJumped)
@@ -193,6 +193,8 @@ public class GameplayHandler : MonoBehaviour
    }
    private void DoFire()
    {
+       if (_bullet == null) return;
+       
        if (Shot >= 3)
        {
            Bullet = Instantiate(_bullet);
@@ -213,6 +215,6 @@ public class GameplayHandler : MonoBehaviour
 
    private void DoGuard()
    {
-
+       if (IsGuarding = true);
    }
 }

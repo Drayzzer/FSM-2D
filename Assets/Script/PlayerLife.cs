@@ -2,18 +2,32 @@ using UnityEngine;
 
 public class PlayerLife : MonoBehaviour
 {
-    public float Health = 2;
-    public float MaxHealth = 2;
-    public bool IsDead => Health <= 0;
-    public float FireDamage = 1;
-
-    void Start()
+    public int MaxHealth = 2;
+    public float currentHealth;
+    public Animator _animator;
+    public void Awake()
     {
+        _animator = GetComponent<Animator>();
+        currentHealth = MaxHealth;
     }
 
-    public void TakeDamage()
+    public void TakeDamage(float damage)
     {
-        Health -= FireDamage;
-        
+        currentHealth -= damage;
+        Debug.Log("ca fonctionne");
+        if (currentHealth >= 0)
+        {
+            _animator.SetTrigger("IsDamaged" );
+            Debug.Log("se prends pas des dégâts");
+        }
+        if (currentHealth <= 0)
+        {
+            Die();
+        }
+    }
+    public void Die()
+    {
+        _animator.SetBool("Dead", true );
+        Debug.Log("ce prend des dégâts");
     }
 }
