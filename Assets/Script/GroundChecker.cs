@@ -5,21 +5,21 @@ namespace Script
 {
     public class GroundChecker : MonoBehaviour
     {
-        private GameplayHandler _gameplayHandler;
+        private PlayerStateManager _player;
 
         private void Awake()
         {
-            _gameplayHandler = GetComponentInParent<GameplayHandler>();
+            _player = FindFirstObjectByType<PlayerStateManager>(FindObjectsInactive.Include);
         }
 
         private void OnTriggerEnter2D(Collider2D other)
         {
-            _gameplayHandler.IsGrounded = true;
+            _player.IsGrounded = true;
         }
 
         private void OnTriggerExit2D(Collider2D other)
         {
-            _gameplayHandler.IsGrounded= false;
+            _player.IsGrounded = false;
         }
     }
 }

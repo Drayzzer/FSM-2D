@@ -1,33 +1,38 @@
 using UnityEngine;
 
-public class PlayerLife : MonoBehaviour
+namespace Script
 {
-    public int MaxHealth = 2;
-    public float currentHealth;
-    public Animator _animator;
-    public void Awake()
+    public class PlayerLife : MonoBehaviour
     {
-        _animator = GetComponent<Animator>();
-        currentHealth = MaxHealth;
-    }
+        [SerializeField] private int _maxHealth = 2;
+        [SerializeField] private Animator _animator;
 
-    public void TakeDamage(float damage)
-    {
-        currentHealth -= damage;
-        Debug.Log("ca fonctionne");
-        if (currentHealth >= 0)
+        private float _currentHealth;
+
+        public void Awake()
         {
-            _animator.SetTrigger("IsDamaged" );
-            Debug.Log("se prends pas des dégâts");
+            _animator = GetComponent<Animator>();
+            _currentHealth = _maxHealth;
         }
-        if (currentHealth <= 0)
+
+        public void TakeDamage(float damage)
         {
-            Die();
+            _currentHealth -= damage;
+            Debug.Log("ca fonctionne");
+            if (_currentHealth >= 0)
+            {
+                _animator.SetTrigger("IsDamaged" );
+                Debug.Log("se prends pas des dégâts");
+            }
+            if (_currentHealth <= 0)
+            {
+                Die();
+            }
         }
-    }
-    public void Die()
-    {
-        _animator.SetBool("Dead", true );
-        Debug.Log("ce prend des dégâts");
+        public void Die()
+        {
+            _animator.SetBool("Dead", true );
+            Debug.Log("ce prend des dégâts");
+        }
     }
 }
