@@ -4,25 +4,28 @@ namespace Script
 {
     public class PlayerLife : MonoBehaviour
     {
-        [SerializeField] private int _maxHealth = 2;
+        [SerializeField] private int _maxHealth = 5;
         [SerializeField] private Animator _animator;
+        
+        public HealthBar healthBar;
 
-        private float _currentHealth;
+        private int _currentHealth;
 
         public void Awake()
         {
             _animator = GetComponent<Animator>();
             _currentHealth = _maxHealth;
+            healthBar.SetMaxHealth(_maxHealth);
         }
 
-        public void TakeDamage(float damage)
+        public void TakeDamage(int damage)
         {
             _currentHealth -= damage;
-            Debug.Log("ca fonctionne");
+            
+            healthBar.SetHealth(_currentHealth);
             if (_currentHealth >= 0)
             {
                 _animator.SetTrigger("IsDamaged" );
-                Debug.Log("se prends pas des dégâts");
             }
             if (_currentHealth <= 0)
             {

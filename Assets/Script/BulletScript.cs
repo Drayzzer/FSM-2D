@@ -38,9 +38,9 @@ namespace Script
 
 
                 if (playerManager.IsGuarding)
-                    playerLife.TakeDamage(0.5f);
-                else
                     playerLife.TakeDamage(1);
+                else
+                    playerLife.TakeDamage(2);
 
                 Destroy(gameObject, _destroy);
             }

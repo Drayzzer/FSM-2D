@@ -269,7 +269,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDamping: 0
   m_AngularDamping: 0.05
-  m_GravityScale: 2
+  m_GravityScale: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -433,6 +433,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerLife
   _maxHealth: 2
   _animator: {fileID: 0}
+  healthBar: {fileID: 0}
 --- !u!114 &9131506107111888877
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -445,12 +446,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e727e5400c934b19968f986243b4e343, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Script.PlayerStateManager
-  _moveSpeed: 2000
+  _moveSpeed: 1500
   _jumpForce: 50
-  _airMultiplier: 1.5
-  _dodgeMultiplier: 2
+  _airMultiplier: 2.5
+  _dodgeMultiplier: 2.5
   _crouchMulitplier: 0.5
-  _fireCooldown: 2
+  _fireCooldown: 1
   _fireRecoil: 50
   _bulletPrefab: {fileID: 4969173059076236339, guid: b9b635caee81cb747884f2bdb24076aa, type: 3}
   _bulletSpawnRight: {fileID: 172125378695435058}
