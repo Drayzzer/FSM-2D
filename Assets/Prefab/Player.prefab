@@ -157,7 +157,7 @@ GameObject:
   m_Component:
   - component: {fileID: 172125378695435058}
   m_Layer: 0
-  m_Name: Gun
+  m_Name: GunR
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -247,6 +247,37 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0.62}
   m_Size: {x: 0.3, y: 1.01}
   m_Direction: 0
+--- !u!1 &3534182496430685416
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 9195968639915508420}
+  m_Layer: 0
+  m_Name: GunL
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &9195968639915508420
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3534182496430685416}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.58, y: 0.4, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3310257664403523319}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6557986990876180435
 GameObject:
   m_ObjectHideFlags: 0
@@ -378,8 +409,9 @@ Transform:
   - {fileID: 1024881583942090501}
   - {fileID: 7805744035048632790}
   - {fileID: 2684389324280015918}
-  - {fileID: 172125378695435058}
   - {fileID: 7119352563647053842}
+  - {fileID: 172125378695435058}
+  - {fileID: 9195968639915508420}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &3542720774541827682

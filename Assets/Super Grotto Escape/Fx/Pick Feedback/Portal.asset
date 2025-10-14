@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13b75c95f34a00d4e8c04f76b73312e6, type: 3}
+  m_Name: Portal
+  m_EditorClassIdentifier: Unity.2D.Tilemap.Extras::UnityEngine.Tilemaps.AnimatedTile
+  m_AnimatedSprites:
+  - {fileID: 21300000, guid: 9524abe71082e044fb0a3f7a2bb8d284, type: 3}
+  - {fileID: 21300000, guid: ccf35817ff688814284d0036977f1df1, type: 3}
+  - {fileID: 21300000, guid: b54a358ce272e2849b7a9cada905aac8, type: 3}
+  - {fileID: 21300000, guid: fb26aeb6d5122ef469a2f7950620b20a, type: 3}
+  - {fileID: 21300000, guid: 3d8bdda4d927ea043add55a3573afdd9, type: 3}
+  - {fileID: 21300000, guid: fa07e57c746952d4795fb09f2a908255, type: 3}
+  - {fileID: 21300000, guid: bbc8ba268532ce8409949783ca71ec9f, type: 3}
+  m_MinSpeed: 5
+  m_MaxSpeed: 5
+  m_AnimationStartTime: 0
+  m_AnimationStartFrame: 0
+  m_TileColliderType: 0
+  m_TileAnimationFlags: 0
