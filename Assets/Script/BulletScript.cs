@@ -26,19 +26,11 @@ namespace Script
             
             if (other.gameObject.CompareTag("Player1"))
             {
-                Destroy(gameObject, _destroy);
-                GameplayHandler gameplayHandler = other.gameObject.GetComponent<GameplayHandler>();
-                Debug.Log("gameplayhandler marche");
                 PlayerLife playerLife = other.gameObject.GetComponent<PlayerLife>();
                 Debug.Log("playerlife marche");
-                if (gameplayHandler.IsGuarding)
-                {
-                    playerLife.TakeDamage(0.5f);
-                }
-                else
-                {
-                    playerLife.TakeDamage(1);
-                }
+                playerLife.TakeDamage(1f);
+                
+                Destroy(gameObject, _destroy);
             }
         }
     }

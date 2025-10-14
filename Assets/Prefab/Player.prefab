@@ -579,6 +579,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerLife
   MaxHealth: 2
   currentHealth: 0
+  damageReduction: 2
   _animator: {fileID: 0}
 --- !u!1001 &1975653623732898860
 PrefabInstance:
