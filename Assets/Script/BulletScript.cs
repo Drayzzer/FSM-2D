@@ -28,16 +28,16 @@ namespace Script
             }
             else if (other.gameObject.CompareTag("Player1"))
             {
-                PlayerStateManager playerManager = other.GetComponent<PlayerStateManager>();
+                GameplayHandler gameplayHandler = other.GetComponent<GameplayHandler>();
                 PlayerLife playerLife = other.GetComponent<PlayerLife>();
 
-                if (!playerManager)
+                if (!gameplayHandler)
                     throw new Exception($"Bullet can't find a PlayerStateManager component on object: {other.gameObject.name}");
                 if (!playerLife)
                     throw new Exception($"Bullet can't find a PlayerLife component on object: {other.gameObject.name}");
 
 
-                if (playerManager.IsGuarding)
+                if (gameplayHandler.IsGuarding.Value)
                     playerLife.TakeDamage(1);
                 else
                     playerLife.TakeDamage(2);

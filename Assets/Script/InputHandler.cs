@@ -9,15 +9,14 @@ namespace Script
         public static event Action<bool> OnInputDeviceChanged;
 
         private PlayerInput _playerInput;
-        private PlayerStateManager _player;
+        private GameplayHandler _player;
+        
         private bool _isControllerConnected;
 
         private void Awake()
         {
-            // Tip: GetComponent() ne cherche que sur l'objet où le script se trouve
             _playerInput = GetComponent<PlayerInput>();
-            // FindFirstObjectByType() cherche à travers tout les objets pour trouver le composant.
-            _player = FindFirstObjectByType<PlayerStateManager>();
+            _player = FindFirstObjectByType<GameplayHandler>();
             if (_playerInput == null) throw new NullReferenceException("PlayerInputManager is null");
         }
 
@@ -25,38 +24,12 @@ namespace Script
         {
             InputSystem.onDeviceChange += OnDeviceChange;
 
-            // Bind input actions
-            _playerInput.actions["Move"].performed += OnMove;
-            _playerInput.actions["Move"].canceled += OnMove;
-            _playerInput.actions["Jump"].performed += OnJump;
-            _playerInput.actions["Jump"].canceled += OnJump;
-            _playerInput.actions["Crouch"].performed += OnCrouch;
-            _playerInput.actions["Crouch"].canceled += OnCrouch;
-            _playerInput.actions["Fire"].performed += OnFire;
-            _playerInput.actions["Fire"].canceled += OnFire;
-            _playerInput.actions["Dodge"].performed += OnDodge;
-            _playerInput.actions["Dodge"].canceled += OnDodge;
-            _playerInput.actions["Guard"].performed += OnGuard;
-            _playerInput.actions["Guard"].canceled += OnGuard;
             DetectCurrentInputDevice();
         }
         private void OnDisable()
         {
             InputSystem.onDeviceChange -= OnDeviceChange;
-
-            // Unbind input actions
-            _playerInput.actions["Move"].performed -= OnMove;
-            _playerInput.actions["Move"].canceled -= OnMove;
-            _playerInput.actions["Jump"].performed -= OnJump;
-            _playerInput.actions["Jump"].canceled -= OnJump;
-            _playerInput.actions["Crouch"].performed -= OnCrouch;
-            _playerInput.actions["Crouch"].canceled -= OnCrouch;
-            _playerInput.actions["Fire"].performed -= OnFire;
-            _playerInput.actions["Fire"].canceled -= OnFire;
-            _playerInput.actions["Dodge"].performed -= OnDodge;
-            _playerInput.actions["Dodge"].canceled -= OnDodge;
-            _playerInput.actions["Guard"].performed -= OnGuard;
-            _playerInput.actions["Guard"].canceled -= OnGuard;
+            
         }
         private void OnDeviceChange(InputDevice device, InputDeviceChange change)
         {
@@ -74,29 +47,29 @@ namespace Script
                 ? "Controller connected: Switching to Gamepad controls."
                 : "No controller connected: Switching to Keyboard/Mouse controls.");
         }
-        private void OnMove(InputAction.CallbackContext context)
+        private void OnMove(InputValue value)
         {
-            _player.Move = context.ReadValue<Vector2>();
+            _player.Move = value.Get<Vector2>();
         }
-        private void OnJump(InputAction.CallbackContext context)
+        private void OnJump(InputValue value)
         {
-            _player.IsJumping = context.ReadValueAsButton();
+            if (value.isPressed) _player.IsJumping.launch();
         }
-        private void OnCrouch(InputAction.CallbackContext context)
+        private void OnCrouch(InputValue value)
         {
-            _player.IsCrouching = context.ReadValueAsButton();
+            if (value.isPressed) _player.IsCrouching.launch();
         }
-        private void OnFire(InputAction.CallbackContext context)
+        private void OnFire(InputValue value)
         {
-            _player.IsFiring = context.ReadValueAsButton();
+            if (value.isPressed) _player.IsFiring.launch();
+        } 
+        private void OnDodge(InputValue value)
+        {
+            if (value.isPressed) _player.IsDodging.launch();
         }
-        private void OnDodge(InputAction.CallbackContext context)
+        private void OnGuard(InputValue value)
         {
-            _player.IsDodging = context.ReadValueAsButton();
-        }
-        private void OnGuard(InputAction.CallbackContext context)
-        {
-            _player.IsGuarding = context.ReadValueAsButton();
+            if (value.isPressed) _player.IsGuarding.launch();
         }
     }
 }

@@ -5,11 +5,11 @@ namespace Script
 {
     public class GroundChecker : MonoBehaviour
     {
-        private PlayerStateManager _player;
+        private GameplayHandler _player;
 
         private void Awake()
         {
-            _player = FindFirstObjectByType<PlayerStateManager>(FindObjectsInactive.Include);
+            _player = FindFirstObjectByType<GameplayHandler>(FindObjectsInactive.Include);
         }
 
         private void OnTriggerEnter2D(Collider2D other)

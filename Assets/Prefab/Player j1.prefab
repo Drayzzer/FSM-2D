@@ -46,9 +46,8 @@ GameObject:
   - component: {fileID: 242385368347964088}
   - component: {fileID: 6335602824921141640}
   - component: {fileID: 4851520400825028345}
-  - component: {fileID: 3227626485428502448}
-  - component: {fileID: 8083030053566034616}
-  - component: {fileID: 8143921747120177665}
+  - component: {fileID: 1867624134330247238}
+  - component: {fileID: 3127088163097296455}
   m_Layer: 0
   m_Name: Player j1
   m_TagString: Player1
@@ -246,7 +245,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Unity.InputSystem::UnityEngine.InputSystem.PlayerInput
   m_Actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
-  m_NotificationBehavior: 3
+  m_NotificationBehavior: 0
   m_UIInputModule: {fileID: 0}
   m_DeviceLostEvent:
     m_PersistentCalls:
@@ -285,7 +284,68 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &3227626485428502448
+--- !u!60 &1867624134330247238
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1530584103032686533}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0}
+    oldSize: {x: 3.125, y: 1.71875}
+    newSize: {x: 1, y: 2}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 0.4375, y: 0}
+      - {x: 0.4375, y: 1.09375}
+      - {x: 0.21875, y: 1.34375}
+      - {x: 0.09375, y: 1.375}
+      - {x: -0.15625, y: 1.375}
+      - {x: -0.5625, y: 0.96875}
+      - {x: -1.0625, y: 0.34375}
+      - {x: -1.03125, y: 0.25}
+      - {x: -0.59375, y: 0.21875}
+      - {x: -0.5625, y: 0}
+      - {x: -0.25, y: 0}
+      - {x: 0, y: 0.375}
+      - {x: 0.0625, y: 0.0625}
+      - {x: 0.125, y: 0}
+  m_UseDelaunayMesh: 0
+--- !u!114 &3127088163097296455
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -294,56 +354,50 @@ MonoBehaviour:
   m_GameObject: {fileID: 1530584103032686533}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a47a5b72c46546740996e375724c6ba9, type: 3}
+  m_Script: {fileID: 11500000, guid: fd427cdb0d7da114a8fd9bf08554b3db, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::InputHandler
---- !u!114 &8083030053566034616
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1530584103032686533}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a5f51bd342fba354b8e1a190153bb62d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PlayerLife
-  _maxHealth: 2
-  _animator: {fileID: 0}
-  healthBar: {fileID: 0}
---- !u!114 &8143921747120177665
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1530584103032686533}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e727e5400c934b19968f986243b4e343, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Script.PlayerStateManager
-  _moveSpeed: 1500
-  _jumpForce: 50
-  _airMultiplier: 2.5
-  _dodgeMultiplier: 2.5
-  _crouchMulitplier: 0.5
-  _fireCooldown: 1
-  _fireRecoil: 50
-  _bulletPrefab: {fileID: 4969173059076236339, guid: b9b635caee81cb747884f2bdb24076aa, type: 3}
-  _bulletSpawnRight: {fileID: 2390623530122204471}
-  _bulletSpawnLeft: {fileID: 30716301486156551}
-  _crouchingCollider: {fileID: 242385368347964088}
-  _standingCollider: {fileID: 6569621884286271096}
+  m_EditorClassIdentifier: Assembly-CSharp::Script.GameplayHandler
+  _moveSpeed: 0
+  _jumpForce: 0
+  _airMultiplier: 0
+  _crouchMultiplier: 0
+  _dodgeMultiplier: 0
+  Dodge: 0
+  _fireCooldown: 0
+  _fireRecoil: 0
+  FireTimer: 0
+  _inputController: {fileID: 0}
+  Recul: 0
+  InAirControl: 0
+  _hurtBox: {fileID: 0}
+  IsGrounded: 0
   Move: {x: 0, y: 0}
   IsWalking: 0
-  IsJumping: 0
-  IsCrouching: 0
-  IsFiring: 0
-  IsDodging: 0
-  IsGuarding: 0
   IsDead: 0
+  HasJumped: 0
+  IsJumping:
+    _endtime: 0
+  IsCrouching:
+    _endtime: 0
+  IsFiring:
+    _endtime: 0
+  IsDodging:
+    _endtime: 0
+  IsGuarding:
+    _endtime: 0
+  _bulletPrefab: {fileID: 0}
+  _bulletSpawnRight: {fileID: 0}
+  _bulletSpawnLeft: {fileID: 0}
+  _actions: []
+  _animator: {fileID: 0}
+  _rigidbody2D: {fileID: 0}
+  _spriteRenderer: {fileID: 0}
+  CrouchingCollider: {fileID: 0}
+  StandingCollider: {fileID: 0}
+  _standingCollider: {fileID: 0}
+  _hitboxCollider: {fileID: 0}
+  _bullet: {fileID: 0}
+  _actionIndex: 0
 --- !u!1 &2912854912205987423
 GameObject:
   m_ObjectHideFlags: 0

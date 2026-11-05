@@ -4695,6 +4695,58 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player j1
       objectReference: {fileID: 0}
+    - target: {fileID: 1867624134330247238, guid: f0030248ddf8006408ea13f0e848d065, type: 3}
+      propertyPath: m_Points.m_Paths.Array.data[0].Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3127088163097296455, guid: f0030248ddf8006408ea13f0e848d065, type: 3}
+      propertyPath: Dodge
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 3127088163097296455, guid: f0030248ddf8006408ea13f0e848d065, type: 3}
+      propertyPath: _hurtBox
+      value: 
+      objectReference: {fileID: 5058508993059425414}
+    - target: {fileID: 3127088163097296455, guid: f0030248ddf8006408ea13f0e848d065, type: 3}
+      propertyPath: _jumpForce
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 3127088163097296455, guid: f0030248ddf8006408ea13f0e848d065, type: 3}
+      propertyPath: _moveSpeed
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 3127088163097296455, guid: f0030248ddf8006408ea13f0e848d065, type: 3}
+      propertyPath: _bulletPrefab
+      value: 
+      objectReference: {fileID: 4969173059076236339, guid: b9b635caee81cb747884f2bdb24076aa, type: 3}
+    - target: {fileID: 3127088163097296455, guid: f0030248ddf8006408ea13f0e848d065, type: 3}
+      propertyPath: _fireCooldown
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3127088163097296455, guid: f0030248ddf8006408ea13f0e848d065, type: 3}
+      propertyPath: _airMultiplier
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 3127088163097296455, guid: f0030248ddf8006408ea13f0e848d065, type: 3}
+      propertyPath: _bulletSpawnLeft
+      value: 
+      objectReference: {fileID: 5058508993059425412}
+    - target: {fileID: 3127088163097296455, guid: f0030248ddf8006408ea13f0e848d065, type: 3}
+      propertyPath: _dodgeMultiplier
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 3127088163097296455, guid: f0030248ddf8006408ea13f0e848d065, type: 3}
+      propertyPath: _inputController
+      value: 
+      objectReference: {fileID: 5058508993059425415}
+    - target: {fileID: 3127088163097296455, guid: f0030248ddf8006408ea13f0e848d065, type: 3}
+      propertyPath: _bulletSpawnRight
+      value: 
+      objectReference: {fileID: 5058508993059425413}
+    - target: {fileID: 3127088163097296455, guid: f0030248ddf8006408ea13f0e848d065, type: 3}
+      propertyPath: _crouchMultiplier
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 4397974532244225206, guid: f0030248ddf8006408ea13f0e848d065, type: 3}
       propertyPath: m_LocalPosition.x
       value: -5.39
@@ -4735,15 +4787,46 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8083030053566034616, guid: f0030248ddf8006408ea13f0e848d065, type: 3}
-      propertyPath: healthBar
-      value: 
-      objectReference: {fileID: 518838802}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1530584103032686533, guid: f0030248ddf8006408ea13f0e848d065, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5058508993059425415}
   m_SourcePrefab: {fileID: 100100000, guid: f0030248ddf8006408ea13f0e848d065, type: 3}
+--- !u!1 &5058508993059425411 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1530584103032686533, guid: f0030248ddf8006408ea13f0e848d065, type: 3}
+  m_PrefabInstance: {fileID: 5058508993059425410}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &5058508993059425412 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 30716301486156551, guid: f0030248ddf8006408ea13f0e848d065, type: 3}
+  m_PrefabInstance: {fileID: 5058508993059425410}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &5058508993059425413 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2390623530122204471, guid: f0030248ddf8006408ea13f0e848d065, type: 3}
+  m_PrefabInstance: {fileID: 5058508993059425410}
+  m_PrefabAsset: {fileID: 0}
+--- !u!60 &5058508993059425414 stripped
+PolygonCollider2D:
+  m_CorrespondingSourceObject: {fileID: 1867624134330247238, guid: f0030248ddf8006408ea13f0e848d065, type: 3}
+  m_PrefabInstance: {fileID: 5058508993059425410}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &5058508993059425415
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5058508993059425411}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a47a5b72c46546740996e375724c6ba9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Script.InputHandler
 --- !u!1001 &8623867631045803757
 PrefabInstance:
   m_ObjectHideFlags: 0
